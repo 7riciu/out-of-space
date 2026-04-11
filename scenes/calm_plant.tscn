@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://bnbn8gydtsmf1"]
+
+[ext_resource type="Texture2D" uid="uid://dfgombplhmkbs" path="res://assets/calm_plant.png" id="1_ipjdr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lmddm"]
+atlas = ExtResource("1_ipjdr")
+region = Rect2(0, 0, 56, 126)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_31onn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lmddm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2vomg"]
+radius = 91.08787
+
+[node name="Area2D" type="Area2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_31onn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_2vomg")

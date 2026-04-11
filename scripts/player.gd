@@ -1,12 +1,12 @@
 extends CharacterBody2D
 
-@export var speed : int = 200
+@export var speed : int = 300
 @export_range(0, 1) var deceleration = 0.1
 @export_range(0, 1) var acceleration = 0.1
 
-@export var jump_force : int = -450
+@export var jump_force : int = -650
 
-@export var gravity : int = 1000
+@export var gravity : int = 800
 
 @export var max_health = 100
 @export var heart_count = 3

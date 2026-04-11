@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://r5ssygbbay74"]
+
+[ext_resource type="Texture2D" uid="uid://cto7a6i3lme3s" path="res://assets/spore_plant1.png" id="1_p1hf4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kydc2"]
+atlas = ExtResource("1_p1hf4")
+region = Rect2(0, 0, 54, 84)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_61djv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kydc2")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iyg0f"]
+radius = 71.0
+height = 142.0
+
+[node name="Area2D" type="Area2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_61djv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_iyg0f")
