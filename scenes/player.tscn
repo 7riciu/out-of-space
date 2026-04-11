@@ -1,49 +1,29 @@
-[gd_scene load_steps=10 format=3 uid="uid://sppvkherfsvq"]
+[gd_scene load_steps=7 format=3 uid="uid://sppvkherfsvq"]
 
-[ext_resource type="Texture2D" uid="uid://bcegbykso8jh1" path="res://icon.svg" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://gmxaf6cwyjdp" path="res://scripts/player.gd" id="1_g2els"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3vyb7"]
-atlas = ExtResource("1_3vyb7")
-region = Rect2(32, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_g2els"]
-atlas = ExtResource("1_3vyb7")
-region = Rect2(64, 32, 32, 32)
+[ext_resource type="Texture2D" uid="uid://br8qfewsoxjut" path="res://assets/astronaut.png" id="2_g2els"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qhqgy"]
-atlas = ExtResource("1_3vyb7")
-region = Rect2(32, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dqkch"]
-atlas = ExtResource("1_3vyb7")
-region = Rect2(64, 64, 32, 32)
+atlas = ExtResource("2_g2els")
+region = Rect2(0, 0, 89, 123)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qlg0r"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3vyb7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_g2els")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_qhqgy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dqkch")
 }],
 "loop": true,
 "name": &"idle",
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3vyb7"]
-size = Vector2(32, 32)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dqkch"]
+radius = 34.0
+height = 120.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g2els"]
-radius = 40.804413
+radius = 115.01739
 
 [node name="player" type="CharacterBody2D"]
 script = ExtResource("1_g2els")
@@ -54,7 +34,7 @@ animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_3vyb7")
+shape = SubResource("CapsuleShape2D_dqkch")
 
 [node name="Area2D" type="Area2D" parent="."]
 
