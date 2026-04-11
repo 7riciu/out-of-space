@@ -18,7 +18,6 @@ extends CharacterBody2D
 
 @onready var player_sprite = $AnimatedSprite2D
 @onready var attack_area = $Area2D
-@onready var spawn_point = get_node("/root/game/SpawnPoint")
 
 func _physics_process(delta):
 	
@@ -46,57 +45,11 @@ func _physics_process(delta):
 
 	# Animation
 	if not is_on_floor():
-		player_sprite.play("jump")
+		player_sprite.play("idle")
 		player_sprite.frame = 3
 		player_sprite.stop()
 	elif direction != 0:
-		player_sprite.play("walk")
-	else:
 		player_sprite.play("idle")
-
-	move_and_slide()
-
-	# Attack
-	if Input.is_action_just_pressed("Attack") and not attack_cooldown:
-		attack()
-
-func attack():
-	is_attacking = true
-	attack_cooldown = true
-	attack_area.monitoring = true
-
-	await get_tree().create_timer(0.1).timeout
-	attack_area.monitoring = false
-	is_attacking = false
-
-	await get_tree().create_timer(0.1).timeout
-	attack_cooldown = false
-
-func _on_attack_area_body_entered(body):
-	if body.is_in_group("enemy") and is_attacking:
-		body.enemy_take_damage(attack_power)
-		
-func player_take_damage(amount):
-	player_health -= amount
-	if player_health <= 0:
-		reset_player()
-
-func reset_player():
-	
-	heart_count -= 1
-	
-	if heart_count < 1:
-		die()
 	else:
-		await get_tree().create_timer(0.1).timeout
-		global_position = spawn_point.global_position
-		velocity = Vector2.ZERO
-		player_health = max_health
-		print("You lost a heart")
-		
-func die():
-	await get_tree().create_timer(0.1).timeout
-	get_tree().change_scene_to_file("res://scenes/starting_screen.tscn")
-	
-func gain_heart():
-	heart_count += 1
+		player_sprite.play("idle") 
+	move_and_slide()
