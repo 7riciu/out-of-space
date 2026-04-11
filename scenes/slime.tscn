@@ -1,6 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://cu4qowh6yclp5"]
+[gd_scene load_steps=10 format=3 uid="uid://cu4qowh6yclp5"]
 
 [ext_resource type="Texture2D" uid="uid://dt7a8ab6k8cyx" path="res://assets/slime.png" id="1_371uh"]
+[ext_resource type="Script" uid="uid://coj1hpw0wa4fv" path="res://scripts/slime.gd" id="1_n6pvg"]
+[ext_resource type="Script" uid="uid://dlb5u1mxlg7lh" path="res://scripts/slime_area.gd" id="3_pjw23"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n6pvg"]
+atlas = ExtResource("1_371uh")
+region = Rect2(26, 38, 26, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pjw23"]
+atlas = ExtResource("1_371uh")
+region = Rect2(26, 19, 26, 19)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p2gj0"]
 atlas = ExtResource("1_371uh")
@@ -10,21 +20,50 @@ region = Rect2(0, 0, 106, 78)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_n6pvg")
+}],
+"loop": true,
+"name": &"angry",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pjw23")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_p2gj0")
 }],
 "loop": true,
-"name": &"default",
+"name": &"idle",
 "speed": 5.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fd6lc"]
 radius = 34.20526
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_2npkn"]
+radius = 141.50972
+
 [node name="slime" type="CharacterBody2D"]
+script = ExtResource("1_n6pvg")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_srws1")
+animation = &"angry"
+autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)
 shape = SubResource("CircleShape2D_fd6lc")
+disabled = true
+
+[node name="Area2D" type="Area2D" parent="." groups=["slime_area"]]
+script = ExtResource("3_pjw23")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_2npkn")
