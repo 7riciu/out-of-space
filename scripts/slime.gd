@@ -15,7 +15,7 @@ func _process(_delta: float) -> void:
 			$AnimatedSprite2D.play("attack")
 			if slime_splash_instance == null:
 				slime_splash_instance = slime_splash_scene.instantiate()
-				slime_splash_instance.position = self.position
+				slime_splash_instance.position = self.position + Vector2(-60, 0)
 				get_tree().current_scene.add_child(slime_splash_instance)
 		if happy:
 			$AnimatedSprite2D.play("idle")
