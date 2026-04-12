@@ -7,6 +7,8 @@ func _ready() -> void:
 	self.body_entered.connect(on_body_entered)
 	self.body_exited.connect(on_body_exited)
 	$AnimationPlayer.play("shoot")
+	await get_tree().create_timer(2.0).timeout
+	queue_free()
 
 func _process(_delta: float) -> void:
 	if can_interact:
