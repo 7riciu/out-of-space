@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://co4uft4qm6kf4"]
+[gd_scene load_steps=9 format=3 uid="uid://co4uft4qm6kf4"]
 
 [ext_resource type="Texture2D" uid="uid://dc3i3l88vt6uv" path="res://assets/slime_splash.png" id="1_2e28q"]
+[ext_resource type="Script" uid="uid://bcp86nmiwvbde" path="res://scripts/slime_splash.gd" id="1_sc6hf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sc6hf"]
 atlas = ExtResource("1_2e28q")
@@ -20,7 +21,69 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_88nlx"]
 radius = 11.0
 
+[sub_resource type="Animation" id="Animation_2e28q"]
+resource_name = "shoot"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-60, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-60, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_sc6hf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_88nlx"]
+_data = {
+&"RESET": SubResource("Animation_sc6hf"),
+&"shoot": SubResource("Animation_2e28q")
+}
+
 [node name="Area2D" type="Area2D"]
+script = ExtResource("1_sc6hf")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_mol0a")
@@ -28,3 +91,9 @@ autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_88nlx")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_88nlx")
+}
+autoplay = "shoot"

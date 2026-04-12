@@ -1,16 +1,12 @@
 extends CharacterBody2D
 
-@export var speed : int = 300
+@export var speed = 300
 @export_range(0, 1) var deceleration = 0.1
 @export_range(0, 1) var acceleration = 0.1
+@export var jump_force = -650
+@export var gravity = 800
 
-@export var jump_force : int = -650
-
-@export var gravity : int = 800
-
-@export var max_health = 100
-@export var heart_count = 3
-@onready var player_health = max_health
+@export var health = 10
 
 @export var attack_power = 20
 @onready var is_attacking = false
@@ -20,29 +16,17 @@ extends CharacterBody2D
 @onready var attack_area = $Area2D
 
 func _physics_process(delta):
-	
-	# Move left-right
 	var direction = Input.get_axis("Left", "Right")
-
 	if direction:
 		velocity.x = move_toward(velocity.x, direction * speed, speed * acceleration)
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed * deceleration)
-
-	# Flip around
-	if direction == 1:
-		player_sprite.flip_h = false
-	elif direction == -1:
-		player_sprite.flip_h = true
-
 	# Gravity
 	if not is_on_floor():
 		velocity.y += gravity * delta
-
 	# Jump
 	if Input.is_action_just_pressed("Jump") and is_on_floor():
 		velocity.y = jump_force
-
 	# Animation
 	if not is_on_floor():
 		player_sprite.play("idle")
@@ -52,4 +36,9 @@ func _physics_process(delta):
 		player_sprite.play("idle")
 	else:
 		player_sprite.play("idle") 
+		
 	move_and_slide()
+
+func _process(_delta: float) -> void:
+	if health <= 0:
+		queue_free()
