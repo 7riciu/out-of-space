@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bnbn8gydtsmf1"]
+[gd_scene load_steps=6 format=3 uid="uid://bnbn8gydtsmf1"]
 
 [ext_resource type="Texture2D" uid="uid://dfgombplhmkbs" path="res://assets/calm_plant.png" id="1_ipjdr"]
+[ext_resource type="Script" uid="uid://cmqoae14yaxt4" path="res://scripts/calm_plant.gd" id="1_lmddm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lmddm"]
 atlas = ExtResource("1_ipjdr")
@@ -21,6 +22,7 @@ animations = [{
 radius = 91.08787
 
 [node name="Area2D" type="Area2D"]
+script = ExtResource("1_lmddm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_31onn")
