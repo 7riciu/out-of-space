@@ -1,6 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://r5ssygbbay74"]
+[gd_scene load_steps=7 format=3 uid="uid://r5ssygbbay74"]
 
+[ext_resource type="Texture2D" uid="uid://cjp25bodubujg" path="res://assets/slime_particle.png" id="1_kydc2"]
 [ext_resource type="Texture2D" uid="uid://cto7a6i3lme3s" path="res://assets/spore_plant1.png" id="1_p1hf4"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_61djv"]
+particle_flag_disable_z = true
+angle_min = 1.0000107
+angle_max = 1.0000107
+inherit_velocity_ratio = 1.0
+velocity_pivot = Vector3(10, 0, 0)
+spread = 180.0
+initial_velocity_min = 72.88
+initial_velocity_max = 93.22
+gravity = Vector3(0, 98, 0)
+scale_min = 0.5
+scale_max = 1.5
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kydc2"]
 atlas = ExtResource("1_p1hf4")
@@ -23,8 +37,14 @@ height = 142.0
 
 [node name="Area2D" type="Area2D"]
 
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(0, 7)
+texture = ExtResource("1_kydc2")
+process_material = SubResource("ParticleProcessMaterial_61djv")
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_61djv")
+animation = &"new_animation"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_iyg0f")

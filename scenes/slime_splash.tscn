@@ -1,7 +1,21 @@
-[gd_scene load_steps=9 format=3 uid="uid://co4uft4qm6kf4"]
+[gd_scene load_steps=11 format=3 uid="uid://co4uft4qm6kf4"]
 
 [ext_resource type="Texture2D" uid="uid://dc3i3l88vt6uv" path="res://assets/slime_splash.png" id="1_2e28q"]
 [ext_resource type="Script" uid="uid://bcp86nmiwvbde" path="res://scripts/slime_splash.gd" id="1_sc6hf"]
+[ext_resource type="Texture2D" uid="uid://cjp25bodubujg" path="res://assets/slime_particle.png" id="3_88nlx"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rwkkl"]
+particle_flag_disable_z = true
+angle_min = 1.0000107
+angle_max = 1.0000107
+inherit_velocity_ratio = 1.0
+velocity_pivot = Vector3(10, 0, 0)
+spread = 180.0
+initial_velocity_min = 72.88
+initial_velocity_max = 93.22
+gravity = Vector3(0, 98, 0)
+scale_min = 0.5
+scale_max = 1.5
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sc6hf"]
 atlas = ExtResource("1_2e28q")
@@ -20,33 +34,6 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_88nlx"]
 radius = 11.0
-
-[sub_resource type="Animation" id="Animation_2e28q"]
-resource_name = "shoot"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(-60, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CollisionShape2D:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(-60, 0)]
-}
 
 [sub_resource type="Animation" id="Animation_sc6hf"]
 length = 0.001
@@ -75,6 +62,33 @@ tracks/1/keys = {
 "values": [Vector2(0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_2e28q"]
+resource_name = "shoot"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-60, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-60, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_88nlx"]
 _data = {
 &"RESET": SubResource("Animation_sc6hf"),
@@ -83,6 +97,11 @@ _data = {
 
 [node name="Area2D" type="Area2D"]
 script = ExtResource("1_sc6hf")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(0, 7)
+texture = ExtResource("3_88nlx")
+process_material = SubResource("ParticleProcessMaterial_rwkkl")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_mol0a")

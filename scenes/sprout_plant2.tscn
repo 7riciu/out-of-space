@@ -1,6 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://ckrn2n4ids7du"]
+[gd_scene load_steps=7 format=3 uid="uid://ckrn2n4ids7du"]
 
 [ext_resource type="Texture2D" uid="uid://d12gq0ydjymn" path="res://assets/spore_plant2.png" id="1_0brpe"]
+[ext_resource type="Texture2D" uid="uid://cjp25bodubujg" path="res://assets/slime_particle.png" id="1_20yx5"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vj5dy"]
+particle_flag_disable_z = true
+angle_min = 1.0000107
+angle_max = 1.0000107
+inherit_velocity_ratio = 1.0
+velocity_pivot = Vector3(10, 0, 0)
+spread = 180.0
+initial_velocity_min = 72.88
+initial_velocity_max = 93.22
+gravity = Vector3(0, 98, 0)
+scale_min = 0.5
+scale_max = 1.5
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_20yx5"]
 atlas = ExtResource("1_0brpe")
@@ -22,6 +36,11 @@ radius = 62.0
 height = 130.0
 
 [node name="Area2D" type="Area2D"]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(0, 7)
+texture = ExtResource("1_20yx5")
+process_material = SubResource("ParticleProcessMaterial_vj5dy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_vj5dy")
