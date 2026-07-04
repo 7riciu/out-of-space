@@ -1,6 +1,7 @@
 extends Area2D
 
 @onready var slime = get_tree().get_first_node_in_group("slime")
+@onready var slime_area = get_tree().get_first_node_in_group("slime_area")
 @onready var collected = false
 var can_interact = false
 
@@ -11,6 +12,8 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if can_interact and Input.is_action_just_pressed("e"):
 		collected = true
+	
+	if slime_area.can_interact and Input.is_action_just_pressed("e"):
 		slime.happy = true
 
 func on_body_entered(body):
