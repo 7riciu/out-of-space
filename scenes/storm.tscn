@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bbjhkthmde1oi"]
+
+[ext_resource type="Script" uid="uid://cbot5jqkrhceg" path="res://scripts/storm.gd" id="1_iee56"]
+
+[node name="Storm" type="Area2D"]
+script = ExtResource("1_iee56")

@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://o6ucajjfyfrr"]
+
+[ext_resource type="Texture2D" uid="uid://dc3i3l88vt6uv" path="res://assets/slime_splash.png" id="1_b1tpw"]
+[ext_resource type="Script" uid="uid://b88b3v2nh6qmt" path="res://scripts/storm_attack_particle.gd" id="1_o7uif"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e674d"]
+atlas = ExtResource("1_b1tpw")
+region = Rect2(0, 0, 29, 23)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qgu8t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e674d")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qbh0h"]
+radius = 15.524175
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("1_o7uif")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_qgu8t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_qbh0h")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
