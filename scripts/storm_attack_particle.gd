@@ -8,8 +8,11 @@ func _ready() -> void:
 	self.body_exited.connect(on_body_exited)
 
 func _process(_delta: float) -> void:
+	self.position = self.position - Vector2(1, 0)
 	if can_interact:
 		player.health -= 10
+	if self.position == Vector2(0, 0):
+		queue_free()
 
 func on_body_entered(body):
 	if body.is_in_group("player"):
