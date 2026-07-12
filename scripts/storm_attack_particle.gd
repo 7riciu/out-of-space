@@ -10,8 +10,9 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	self.position = self.position - Vector2(1, 0)
 	if can_interact:
-		player.health -= 10
-	if self.position == Vector2(0, 0):
+		player.heart_count -= 1
+		queue_free()
+	if self.position.x == -100:
 		queue_free()
 
 func on_body_entered(body):

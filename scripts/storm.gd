@@ -5,6 +5,7 @@ var storm_running = false
 var storm_cooldown = 120
 
 func _process(_delta: float) -> void:
+	await get_tree().create_timer(2.0).timeout
 	if not storm_running:
 		storm()
 		storm_running = true

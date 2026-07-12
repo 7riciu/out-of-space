@@ -12,7 +12,8 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	if can_interact:
-		player.health -= 10
+		player.heart_count -= 1
+		queue_free()
 
 func on_body_entered(body):
 	if body.is_in_group("player"):

@@ -6,7 +6,7 @@ extends CharacterBody2D
 @export var jump_force = -650
 @export var gravity = 800
 
-@export var health = 10
+@onready var heart_count = 5
 
 @export var attack_power = 20
 @onready var is_attacking = false
@@ -40,5 +40,5 @@ func _physics_process(delta):
 	move_and_slide()
 
 func _process(_delta: float) -> void:
-	if health <= 0:
+	if heart_count <= 0:
 		queue_free()
