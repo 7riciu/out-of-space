@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://ddv23ppjmi4uw"]
+[gd_scene load_steps=6 format=3 uid="uid://ddv23ppjmi4uw"]
 
+[ext_resource type="Script" uid="uid://damp1uhjxn3f1" path="res://scripts/slime_resource.gd" id="1_jms8a"]
 [ext_resource type="Texture2D" uid="uid://dc3i3l88vt6uv" path="res://assets/slime_splash.png" id="1_ugym4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jms8a"]
@@ -21,6 +22,7 @@ animations = [{
 radius = 131.46101
 
 [node name="Area2D" type="Area2D"]
+script = ExtResource("1_jms8a")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(57.25, 40.75)

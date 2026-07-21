@@ -11,6 +11,7 @@ extends CharacterBody2D
 
 @onready var plant_fed = false
 @onready var happy = false
+@onready var slime_resource = false
 
 func _process(_delta: float) -> void:
 	if not happy:
@@ -20,7 +21,6 @@ func _process(_delta: float) -> void:
 				$AnimatedSprite2D.play("idle")
 	
 	else:
-		await get_tree().create_timer(1.0).timeout
 		produce_slime()
 
 func angry():
@@ -45,7 +45,9 @@ func angry():
 	$AnimatedSprite2D.play("angry")
 
 func produce_slime():
-	if slime_resource_instance == null:
-		slime_resource_instance = slime_resource_scene.instantiate()
-		slime_resource_instance.position = self.position + Vector2(-200, 0)
-		get_tree().current_scene.add_child(slime_resource_instance)
+	if not slime_resource:
+		if slime_resource_instance == null:
+			slime_resource_instance = slime_resource_scene.instantiate()
+			slime_resource_instance.position = self.position + Vector2(-200, 0)
+			get_tree().current_scene.add_child(slime_resource_instance)
+			slime_resource = true

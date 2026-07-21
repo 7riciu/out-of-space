@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://sl735eiihohs"]
+[gd_scene load_steps=12 format=3 uid="uid://sl735eiihohs"]
 
 [ext_resource type="Texture2D" uid="uid://dxdn7ilxq0ya5" path="res://assets/tiles.png" id="1_p57ef"]
 [ext_resource type="PackedScene" uid="uid://sppvkherfsvq" path="res://scenes/player.tscn" id="1_uwrxv"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://r5ssygbbay74" path="res://scenes/sprout_plant1.tscn" id="4_u5sy4"]
 [ext_resource type="PackedScene" uid="uid://ckrn2n4ids7du" path="res://scenes/sprout_plant2.tscn" id="5_gee14"]
 [ext_resource type="PackedScene" uid="uid://bnbn8gydtsmf1" path="res://scenes/calm_plant.tscn" id="6_0tnpc"]
+[ext_resource type="PackedScene" uid="uid://db8dbqh4ac66y" path="res://scenes/build_button.tscn" id="9_0tnpc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u5sy4"]
 texture = ExtResource("1_p57ef")
@@ -766,3 +767,6 @@ position = Vector2(1717, 710)
 
 [node name="Area2D4" parent="." instance=ExtResource("6_0tnpc")]
 position = Vector2(410, 688)
+
+[node name="Area2D5" parent="." instance=ExtResource("9_0tnpc")]
+position = Vector2(58, 352)
