@@ -6,7 +6,7 @@ extends Area2D
 @onready var mouse_inside = false
 @onready var picked_block = false
 
-func _on_mouse_entered() -> void:
+func _on_mouse_entexred() -> void:
 	mouse_inside = true
 
 func _on_mouse_exited() -> void:
