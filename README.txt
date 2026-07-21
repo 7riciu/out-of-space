@@ -1,6 +1,9 @@
 An astronaut stranded on a mysterious island needs to survive spore storms 🔭🌫️🌱
 Befriend slimes and build shelter from the green phenomenon 🛖
 
+I am aware that the game requires some polishing and more assets 😅
+I will surely ccontinue working on this 👍🏻
+
 How to play:
 Collect "calm plants". Feed "calm plants" to slimes 
 in order to befriend them. Once friendly, slimes drop 
