@@ -14,3 +14,10 @@ a - move to the right
 d - move to the left
 space - jump
 e - collect "calm plants", feed slime, place slime blocks
+
+AI usage:
+I didn't use AI at all for this project. I did the art myself. 
+I didn't find the coding part too complex either; the 
+experience I have from some of my past projects was very 
+useful. I only used AI in 2-3 instances for spotting mistakes 
+I just couldn't find by myself.
