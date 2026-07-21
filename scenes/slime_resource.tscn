@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://ddv23ppjmi4uw"]
+
+[ext_resource type="Texture2D" uid="uid://dc3i3l88vt6uv" path="res://assets/slime_splash.png" id="1_ugym4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jms8a"]
+atlas = ExtResource("1_ugym4")
+region = Rect2(0, 0, 29, 23)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bcb73"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jms8a")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ugym4"]
+radius = 131.46101
+
+[node name="Area2D" type="Area2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(57.25, 40.75)
+scale = Vector2(4.948276, 4.5434785)
+sprite_frames = SubResource("SpriteFrames_bcb73")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(57, 38)
+shape = SubResource("CircleShape2D_ugym4")

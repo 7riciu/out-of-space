@@ -6,6 +6,9 @@ extends CharacterBody2D
 @onready var slime_splash_scene = preload("res://scenes/slime_splash.tscn")
 @onready var slime_splash_animation = get_tree().get_first_node_in_group("slime_splash_animation")
 @onready var slime_splash_instance = null
+@onready var slime_resource_scene = preload("res://scenes/slime_resource.tscn")
+@onready var slime_resource_instance = null
+
 @onready var plant_fed = false
 @onready var happy = false
 
@@ -15,6 +18,10 @@ func _process(_delta: float) -> void:
 			await angry()
 			if not slime_area.can_interact:
 				$AnimatedSprite2D.play("idle")
+	
+	else:
+		await get_tree().create_timer(1.0).timeout
+		produce_slime()
 
 func angry():
 	$AnimatedSprite2D.play("angry")
@@ -36,3 +43,9 @@ func angry():
 
 	await get_tree().create_timer(1.0).timeout
 	$AnimatedSprite2D.play("angry")
+
+func produce_slime():
+	if slime_resource_instance == null:
+		slime_resource_instance = slime_resource_scene.instantiate()
+		slime_resource_instance.position = self.position + Vector2(-200, 0)
+		get_tree().current_scene.add_child(slime_resource_instance)
