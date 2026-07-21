@@ -20,7 +20,7 @@ func _process(_delta: float) -> void:
 	if can_interact:
 		if Input.is_action_just_pressed("e"):
 			self.visible = false
-			slime_resource_count_UI.text = str(int(slime_resource_count_UI.text) + int("1"))
+			slime_resource_count_UI.slime_resource_count = slime_resource_count_UI.slime_resource_count + 1
 			await get_tree().create_timer(2.0).timeout
 			slime.slime_resource = false
 			queue_free()

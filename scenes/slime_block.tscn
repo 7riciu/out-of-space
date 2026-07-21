@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://0cad4uyclkji"]
+
+[ext_resource type="Texture2D" uid="uid://bx3jg7tr1nxa7" path="res://assets/slime_blobk.png" id="1_lg0wg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ft6wg"]
+atlas = ExtResource("1_lg0wg")
+region = Rect2(0, 0, 41, 41)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_af2ek"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ft6wg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Area2D" type="Area2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_af2ek")

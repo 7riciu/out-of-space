@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://brm1g7ex613vf"]
+[gd_scene load_steps=10 format=3 uid="uid://brm1g7ex613vf"]
 
 [ext_resource type="Texture2D" uid="uid://bn7w8clbn33fn" path="res://assets/moon_count.png" id="1_b3bc3"]
 [ext_resource type="Texture2D" uid="uid://cjsv6piy1hy5w" path="res://assets/heart.png" id="2_3b2b5"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://cvqq1mlcbdl07" path="res://scripts/heart_4_UI.gd" id="6_3wlde"]
 [ext_resource type="Script" uid="uid://dyu682ewdx4xn" path="res://scripts/heart_5_UI.gd" id="7_xpksx"]
 [ext_resource type="Texture2D" uid="uid://dc3i3l88vt6uv" path="res://assets/slime_splash.png" id="8_ukj8e"]
+[ext_resource type="Script" uid="uid://dfsjd4p26ic2m" path="res://scripts/slime_resource_count_UI.gd" id="9_ukj8e"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 
@@ -117,3 +118,4 @@ offset_top = -0.24002075
 offset_right = -0.120010376
 offset_bottom = -0.08001709
 text = "0"
+script = ExtResource("9_ukj8e")
